@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öktem Taş - Kaliteli Parke ve Beton Ürünleri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD700',
+                        secondary: '#0a0a0a',
+                        dark: '#000000',
+                        'gold': '#FFD700',
+                        'amber': '#FFA500',
+                        'dark-bg': '#0a0a0a',
+                        'darker-bg': '#050505',
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'system-ui', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'golden-gradient': 'linear-gradient(135deg, #FFD700, #FFA500, #FF8C00)',
+                        'dark-gradient': 'linear-gradient(135deg, #000000, #0a0a0a, #1a1a1a)',
+                    },
+                    boxShadow: {
+                        'golden': '0 0 30px rgba(255, 215, 0, 0.3)',
+                        'golden-lg': '0 0 50px rgba(255, 215, 0, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Hero Slider with Ken Burns Effect */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 3s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            animation: kenBurns 20s ease-out infinite;
+        }
+        .slide.active {
+            opacity: 0.7;
+        }
+        
+        @keyframes kenBurns {
+            0% {
+                transform: scale(1) translateY(0);
+            }
+            100% {
+                transform: scale(1.2) translateY(-5%);
+            }
+        }
+        
+        /* Grid Pattern */
+        .grid-pattern {
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 215, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 12s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Floating Shapes */
+        .floating-shape {
+            position: absolute;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            animation: float-shape 20s infinite ease-in-out;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: -150px;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            bottom: 10%;
+            right: -200px;
+            animation-delay: 5s;
+        }
+        
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float-shape {
+            0%, 100% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.15;
+            }
+            33% {
+                transform: translate(100px, -50px) scale(1.2) rotate(120deg);
+                opacity: 0.3;
+            }
+            66% {
+                transform: translate(-50px, 100px) scale(0.8) rotate(240deg);
+                opacity: 0.2;
+            }
+        }
+        
+        /* Premium Animations */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        
+        .animate-float {
+            animation: floatY 3s ease-in-out infinite;
+        }
+        
+        .animate-gradient-x {
+            background-size: 200% auto;
+            animation: gradientX 3s linear infinite;
+        }
+        
+        .animate-expand {
+            animation: expand 2s ease-out forwards;
+        }
+        
+        .animation-delay-200 { animation-delay: 0.2s; }
+        .animation-delay-400 { animation-delay: 0.4s; }
+        .animation-delay-600 { animation-delay: 0.6s; }
+        .animation-delay-800 { animation-delay: 0.8s; }
+        .animation-delay-1000 { animation-delay: 1s; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes gradientX {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+        
+        @keyframes expand {
+            from { width: 0; }
+            to { width: 128px; }
+        }
+        
+        /* Enhanced hover effects */
+        .glow-on-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .glow-on-hover:hover {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* Particle effect */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            animation: float-particle 15s infinite linear;
+        }
+        
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-100 bg-black">
+    <!-- Modern Header with Centered Navigation -->
+    <header class="fixed w-full top-0 z-50 backdrop-blur-md bg-black/95 border-b border-gold/20">
+        <nav class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-golden-gradient rounded-lg flex items-center justify-center shadow-golden">
+                            <span class="text-black font-bold text-xl">Ö</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gold leading-none">ÖKTEM TAŞ</h1>
+                            <span class="text-xs text-gold/70">Premium Beton Ürünleri</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Centered Desktop Navigation -->
+                <ul id="navMenu" class="hidden md:flex items-center space-x-1 absolute left-1/2 transform -translate-x-1/2">
+                    <li>
+                        <a href="#anasayfa" class="px-5 py-2 rounded-full hover:bg-gold/10 transition-all font-medium text-gray-300 hover:text-gold">
+                            Ana Sayfa
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#urunler" class="px-5 py-2 rounded-full hover:bg-gold/10 transition-all font-medium text-gray-300 hover:text-gold">
+                            Ürünler
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#hakkimizda" class="px-5 py-2 rounded-full hover:bg-gold/10 transition-all font-medium text-gray-300 hover:text-gold">
+                            Hakkımızda
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#projeler" class="px-5 py-2 rounded-full hover:bg-gold/10 transition-all font-medium text-gray-300 hover:text-gold">
+                            Projeler
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#iletisim" class="px-5 py-2 rounded-full hover:bg-gold/10 transition-all font-medium text-gray-300 hover:text-gold">
+                            İletişim
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Right Side CTA & Mobile Toggle -->
+                <div class="flex-1 flex items-center justify-end space-x-4">
+                    <!-- Desktop CTA Button -->
+                    <a href="tel:+905426506764" class="hidden md:flex items-center space-x-2 bg-golden-gradient hover:shadow-golden-lg text-black px-4 py-2 rounded-full transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span class="text-sm font-medium">+90 542 650 67 64</span>
+                    </a>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobileMenuToggle" class="md:hidden relative w-10 h-10 flex items-center justify-center">
+                        <div class="w-6 flex flex-col space-y-1.5">
+                            <span class="w-full h-0.5 bg-gray-300 transition-all"></span>
+                            <span class="w-full h-0.5 bg-gray-300 transition-all"></span>
+                            <span class="w-full h-0.5 bg-gray-300 transition-all"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gold/20 py-4">
+                <ul class="space-y-1">
+                    <li><a href="#anasayfa" class="block px-4 py-3 hover:bg-gold/10 rounded-lg transition-colors font-medium text-gray-300 hover:text-gold">Ana Sayfa</a></li>
+                    <li><a href="#urunler" class="block px-4 py-3 hover:bg-gold/10 rounded-lg transition-colors font-medium text-gray-300 hover:text-gold">Ürünler</a></li>
+                    <li><a href="#hakkimizda" class="block px-4 py-3 hover:bg-gold/10 rounded-lg transition-colors font-medium text-gray-300 hover:text-gold">Hakkımızda</a></li>
+                    <li><a href="#projeler" class="block px-4 py-3 hover:bg-gold/10 rounded-lg transition-colors font-medium text-gray-300 hover:text-gold">Projeler</a></li>
+                    <li><a href="#iletisim" class="block px-4 py-3 hover:bg-gold/10 rounded-lg transition-colors font-medium text-gray-300 hover:text-gold">İletişim</a></li>
+                </ul>
+                <div class="mt-4 px-4">
+                    <a href="tel:+905426506764" class="flex items-center justify-center space-x-2 bg-golden-gradient hover:shadow-golden text-black py-3 rounded-lg transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span class="font-medium">Hemen Ara</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section - Ultra Modern Design -->
+    <section id="anasayfa" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+        <!-- Dynamic Background with Parallax Effect -->
+        <div class="absolute inset-0">
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50 z-10"></div>
+            
+            <!-- Sliding Images with Ken Burns Effect -->
+            <div class="hero-slider absolute inset-0">
+                <div class="slide active" data-bg="assets/DESENLİ PARKE TAŞIGüncel stok ve metre kare fiyatları için iletişime geçin sizin bahçenizde desenli olsun -).jpg"></div>
+                <div class="slide" data-bg="assets/SULU DÖKÜM DEKORATİF TAŞ YÜRÜYÜŞ YOLU  BORDÜR  ÇİM TAŞLARISTOK - NAKLİYE VE FİYAT BİLGİSİ İÇİN;  05426506764.jpg"></div>
+                <div class="slide" data-bg="assets/Altıgen karo taşı- pres makinasından tek tek çıkar her bir tasta emek vardır. Güncel M2 fiyatı icin iletişime geçiniz..jpg"></div>
+            </div>
+            
+            <!-- Animated Grid Pattern -->
+            <div class="absolute inset-0 z-20 opacity-10">
+                <div class="grid-pattern"></div>
+            </div>
+            
+            <!-- Floating Particles -->
+            <div class="particles absolute inset-0 z-10">
+                <div class="particle" style="width: 4px; height: 4px; left: 10%; animation-delay: 0s;"></div>
+                <div class="particle" style="width: 6px; height: 6px; left: 20%; animation-delay: 2s;"></div>
+                <div class="particle" style="width: 3px; height: 3px; left: 30%; animation-delay: 4s;"></div>
+                <div class="particle" style="width: 5px; height: 5px; left: 40%; animation-delay: 6s;"></div>
+                <div class="particle" style="width: 4px; height: 4px; left: 60%; animation-delay: 8s;"></div>
+                <div class="particle" style="width: 3px; height: 3px; left: 70%; animation-delay: 10s;"></div>
+                <div class="particle" style="width: 5px; height: 5px; left: 80%; animation-delay: 12s;"></div>
+                <div class="particle" style="width: 4px; height: 4px; left: 90%; animation-delay: 14s;"></div>
+            </div>
+        </div>
+        
+        <!-- Floating Geometric Shapes -->
+        <div class="absolute inset-0 overflow-hidden z-5">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="relative z-30 container mx-auto px-4">
+            <div class="text-center max-w-6xl mx-auto">
+                <!-- Premium Badge -->
+                <div class="inline-block mb-10 animate-float">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gold blur-xl opacity-60 animate-pulse"></div>
+                        <div class="relative bg-black/80 backdrop-blur-xl border border-gold/40 rounded-2xl px-8 py-3 shadow-golden">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-gold rounded-full animate-ping"></div>
+                                <span class="text-gold font-light tracking-widest text-sm uppercase">Premium Kalite</span>
+                                <div class="w-2 h-2 bg-gold rounded-full animate-ping"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Title with Split Animation -->
+                <div class="mb-8 overflow-hidden">
+                    <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold leading-none">
+                        <span class="block text-white opacity-95 transform hover:scale-105 transition-transform duration-500 animate-slide-up">
+                            ÖKTEM
+                        </span>
+                        <span class="block text-transparent bg-clip-text bg-golden-gradient animate-gradient-x animate-slide-up animation-delay-200">
+                            TAŞ
+                        </span>
+                    </h1>
+                </div>
+                
+                <!-- Subtitle with Typewriter Effect -->
+                <div class="mb-12 space-y-4">
+                    <h2 class="text-2xl md:text-4xl font-thin text-gray-200 tracking-wide animate-fade-in-up animation-delay-400">
+                        Hayalinizdeki Mekanları
+                    </h2>
+                    <div class="h-px w-32 bg-golden-gradient mx-auto animate-expand"></div>
+                    <h3 class="text-3xl md:text-5xl font-bold text-white animate-fade-in-up animation-delay-600">
+                        Birlikte <span class="text-gold">İnşa Edelim</span>
+                    </h3>
+                </div>
+                
+                <!-- Description with Blur Animation -->
+                <p class="text-lg md:text-xl text-gray-300 mb-16 max-w-3xl mx-auto leading-relaxed animate-fade-in animation-delay-800">
+                    40 yıllık tecrübemizle, en kaliteli parke taşı ve beton ürünlerini 
+                    <span class="text-gold font-medium">modern teknoloji</span> ile üretiyoruz
+                </p>
+                
+                <!-- Single CTA Button - Centered and Elegant -->
+                <div class="animate-fade-in-up animation-delay-1000">
+                    <a href="#urunler" class="group relative inline-flex items-center justify-center">
+                        <!-- Button Glow Effect -->
+                        <div class="absolute -inset-1 bg-golden-gradient rounded-full blur-lg opacity-70 group-hover:opacity-100 transition-opacity animate-pulse"></div>
+                        
+                        <!-- Button -->
+                        <div class="relative px-12 py-6 bg-black rounded-full border border-gold/50 overflow-hidden">
+                            <!-- Button Background Animation -->
+                            <div class="absolute inset-0 bg-golden-gradient translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 opacity-20"></div>
+                            
+                            <!-- Button Content -->
+                            <span class="relative flex items-center space-x-3 text-white font-medium text-lg tracking-wide">
+                                <span>Ürünlerimizi Keşfedin</span>
+                                <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Products Section -->
+    <section id="urunler" class="py-20 bg-dark-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">Ürünlerimiz</h2>
+                <div class="w-20 h-1 bg-golden-gradient mx-auto mb-4"></div>
+                <p class="text-xl text-gray-200">Yüksek kaliteli ve dayanıklı beton ürünleri</p>
+            </div>
+            
+            <!-- Product Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-black p-6 rounded-xl border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all cursor-pointer hover:-translate-y-1 transform glow-on-hover">
+                    <div class="text-4xl mb-4">🏗️</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Parke Taşları</h3>
+                    <p class="text-gray-400">Farklı desen ve renk seçenekleri</p>
+                </div>
+                <div class="bg-black p-6 rounded-xl border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all cursor-pointer hover:-translate-y-1 transform glow-on-hover">
+                    <div class="text-4xl mb-4">🚧</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Bordür Taşları</h3>
+                    <p class="text-gray-400">Belediye tipi ve dekoratif bordürler</p>
+                </div>
+                <div class="bg-black p-6 rounded-xl border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all cursor-pointer hover:-translate-y-1 transform glow-on-hover">
+                    <div class="text-4xl mb-4">🕳️</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Rögar Sistemleri</h3>
+                    <p class="text-gray-400">Sulu döküm rögar ve kapakları</p>
+                </div>
+                <div class="bg-black p-6 rounded-xl border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all cursor-pointer hover:-translate-y-1 transform glow-on-hover">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Dekoratif Ürünler</h3>
+                    <p class="text-gray-400">Saksı ve özel tasarım ürünler</p>
+                </div>
+            </div>
+            
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-black rounded-xl overflow-hidden border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all group glow-on-hover">
+                    <div class="overflow-hidden h-64">
+                        <img src="assets/DESENLİ PARKE TAŞIGüncel stok ve metre kare fiyatları için iletişime geçin sizin bahçenizde desenli olsun -) (1).jpg" 
+                             alt="Desenli Parke Taşı" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Desenli Parke Taşı</h3>
+                        <p class="text-gray-400 mb-4">Bahçenize estetik görünüm</p>
+                        <button onclick="openModal('desenli-parke')" class="bg-golden-gradient hover:shadow-golden text-black px-6 py-2 rounded-lg transition-colors font-medium">
+                            Detaylar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-black rounded-xl overflow-hidden border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all group glow-on-hover">
+                    <div class="overflow-hidden h-64">
+                        <img src="assets/Altıgen karo taşı- pres makinasından tek tek çıkar her bir tasta emek vardır. Güncel M2 fiyatı icin iletişime geçiniz..jpg" 
+                             alt="Altıgen Karo Taşı" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Altıgen Karo Taşı</h3>
+                        <p class="text-gray-400 mb-4">El emeği pres üretimi</p>
+                        <button onclick="openModal('altigen-karo')" class="bg-golden-gradient hover:shadow-golden text-black px-6 py-2 rounded-lg transition-colors font-medium">
+                            Detaylar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-black rounded-xl overflow-hidden border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all group glow-on-hover">
+                    <div class="overflow-hidden h-64">
+                        <img src="assets/Belediye tipi bordür..jpg" 
+                             alt="Belediye Tipi Bordür" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Belediye Tipi Bordür</h3>
+                        <p class="text-gray-400 mb-4">Standart yol bordürleri</p>
+                        <button onclick="openModal('bordur')" class="bg-golden-gradient hover:shadow-golden text-black px-6 py-2 rounded-lg transition-colors font-medium">
+                            Detaylar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-black rounded-xl overflow-hidden border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all group glow-on-hover">
+                    <div class="overflow-hidden h-64">
+                        <img src="assets/SULU DÖKÜM DEKORATİF TAŞ YÜRÜYÜŞ YOLU  BORDÜR  ÇİM TAŞLARISTOK - NAKLİYE VE FİYAT BİLGİSİ İÇİN;  05426506764.jpg" 
+                             alt="Dekoratif Taş" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Dekoratif Yürüyüş Yolu</h3>
+                        <p class="text-gray-400 mb-4">Çim taşları ve bordürler</p>
+                        <button onclick="openModal('dekoratif')" class="bg-golden-gradient hover:shadow-golden text-black px-6 py-2 rounded-lg transition-colors font-medium">
+                            Detaylar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-black rounded-xl overflow-hidden border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all group glow-on-hover">
+                    <div class="overflow-hidden h-64">
+                        <img src="assets/SULU DÖKÜM RÖGAR TABANI ÇOK YÖNLÜ (T) DÜZ GEÇİŞ DÖNÜŞLER (sağ-sol) STOK - NAKLİYE VE FİYAT BİLGİSİ İÇİN;  05426506764.jpg" 
+                             alt="Rögar Tabanı" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Rögar Sistemleri</h3>
+                        <p class="text-gray-400 mb-4">Çok yönlü rögar tabanları</p>
+                        <button onclick="openModal('rogar')" class="bg-golden-gradient hover:shadow-golden text-black px-6 py-2 rounded-lg transition-colors font-medium">
+                            Detaylar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-black rounded-xl overflow-hidden border border-gray-800 hover:border-gold/50 hover:shadow-golden transition-all group glow-on-hover">
+                    <div class="overflow-hidden h-64">
+                        <img src="assets/SULU DÖKÜM SAKSI RENKLİ KARO PRES TAŞI  washbeton saksıSTOK - NAKLİYE VE FİYAT BİLGİSİ İÇİN;  05426506764 (1).jpg" 
+                             alt="Renkli Saksı" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Renkli Saksılar</h3>
+                        <p class="text-gray-400 mb-4">Dekoratif beton saksılar</p>
+                        <button onclick="openModal('saksi')" class="bg-golden-gradient hover:shadow-golden text-black px-6 py-2 rounded-lg transition-colors font-medium">
+                            Detaylar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compact About Section -->
+    <section id="hakkimizda" class="py-16 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <!-- Text Content -->
+                    <div>
+                        <div class="inline-block mb-4">
+                            <span class="text-gold text-sm font-medium uppercase tracking-wider">40 Yıllık Tecrübe</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white mb-4">Hakkımızda</h2>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Öktem Taş olarak, parke taşı ve beton ürünleri sektöründe lider konumdayız. 
+                            Modern üretim tesislerimiz ve uzman ekibimizle kaliteli çözümler sunuyoruz.
+                        </p>
+                        
+                        <!-- Compact Features Grid -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                    <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="text-sm font-semibold text-white">Kalite</h4>
+                                <p class="text-xs text-gray-400 mt-1">TSE Standartları</p>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                    <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="text-sm font-semibold text-white">Hız</h4>
+                                <p class="text-xs text-gray-400 mt-1">Hızlı Teslimat</p>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                    <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+                                    </svg>
+                                </div>
+                                <h4 class="text-sm font-semibold text-white">Güven</h4>
+                                <p class="text-xs text-gray-400 mt-1">Müşteri Odaklı</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image -->
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-golden-gradient rounded-2xl blur-2xl opacity-50"></div>
+                        <img src="assets/SULU DÖKÜM RÖGAR YÜKSELTMELERİ5-10-15-20-25-30-35-40-50 ve KAPAK DAHİL OLMAK ÜZERE HER EBATTA RÖGAR İMALATİ YAPMAKTAYIZ_edited_edited_edited.png" 
+                             alt="Üretim" 
+                             class="relative rounded-2xl shadow-xl w-full h-auto max-h-[400px] object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projeler" class="py-20 bg-dark-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">Tamamlanan Projeler</h2>
+                <div class="w-20 h-1 bg-golden-gradient mx-auto mb-4"></div>
+                <p class="text-xl text-gray-200">Gurur duyduğumuz işlerimizden örnekler</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="relative overflow-hidden rounded-xl shadow-lg group cursor-pointer">
+                    <img src="assets/SULU DÖKÜM DEKORATİF TAŞ YÜRÜYÜŞ YOLU  BORDÜR  ÇİM TAŞLARISTOK - NAKLİYE VE FİYAT BİLGİSİ İÇİN;  05426506764 (1).jpg" 
+                         alt="Proje 1" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Park ve Bahçe Düzenlemesi</h3>
+                            <p>Dekoratif taş uygulaması</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative overflow-hidden rounded-xl shadow-lg group cursor-pointer">
+                    <img src="assets/SULU DÖKÜM RÖGAR YÜKSELTMELERİ5-10-15-20-25-30-35-40-50 ve KAPAK DAHİL OLMAK ÜZERE HER EBATTA RÖGAR İMALATİ YAPMAKTAYIZ.   STOK - NAKLİYE VE FİYAT BİLGİSİ İÇİN;  05426506764rogar logar  rogar.jpg" 
+                         alt="Proje 2" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Altyapı Projesi</h3>
+                            <p>Rögar sistemleri kurulumu</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative overflow-hidden rounded-xl shadow-lg group cursor-pointer">
+                    <img src="assets/SULU DÖKÜM DEKORATİF TAŞ YÜRÜYÜŞ YOLU  BORDÜR  ÇİM TAŞLARISTOK - NAKLİYE VE FİYAT BİLGİSİ İÇİN;  05426506764 (2).jpg" 
+                         alt="Proje 3" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Villa Bahçesi</h3>
+                            <p>Özel tasarım döşeme</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-golden-gradient">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-black mb-6">Projeniz İçin Teklif Alın</h2>
+            <p class="text-xl text-black/80 mb-8">Uzman ekibimiz size özel çözümler sunmaya hazır</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+905426506764" class="bg-black text-gold hover:bg-gray-900 px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+                    📞 Hemen Arayın
+                </a>
+                <a href="#iletisim" class="border-2 border-black text-black hover:bg-black hover:text-gold px-8 py-4 rounded-lg font-semibold transition-all">
+                    ✉️ Mesaj Gönderin
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="iletisim" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">İletişim</h2>
+                <div class="w-20 h-1 bg-golden-gradient mx-auto mb-4"></div>
+                <p class="text-xl text-gray-200">Bizimle iletişime geçin</p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto">
+                <!-- İletişim Kartları -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <!-- Telefon Kartı -->
+                    <div class="bg-dark-bg rounded-xl p-6 border border-gray-800 hover:border-gold/50 transition-all group hover:shadow-golden">
+                        <div class="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-all">
+                            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Telefon</h3>
+                        <a href="tel:+905426506764" class="text-gold hover:text-amber transition-colors font-medium">+90 542 650 67 64</a>
+                        <p class="text-gray-400 text-sm mt-2">7/24 Ulaşabilirsiniz</p>
+                    </div>
+                    
+                    <!-- E-posta Kartı -->
+                    <div class="bg-dark-bg rounded-xl p-6 border border-gray-800 hover:border-gold/50 transition-all group hover:shadow-golden">
+                        <div class="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-all">
+                            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">E-posta</h3>
+                        <a href="mailto:info@antalyarogarkapagi.com" class="text-gold hover:text-amber transition-colors text-sm break-all">info@antalyarogarkapagi.com</a>
+                        <p class="text-gray-400 text-sm mt-2">Hızlı Yanıt</p>
+                    </div>
+                    
+                    <!-- WhatsApp Kartı -->
+                    <div class="bg-dark-bg rounded-xl p-6 border border-gray-800 hover:border-gold/50 transition-all group hover:shadow-golden">
+                        <div class="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-all">
+                            <svg class="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.031 1.172c-5.963 0-10.812 4.85-10.812 10.813 0 1.903.5 3.757 1.447 5.388l-1.538 5.613 5.744-1.506a10.768 10.768 0 0 0 5.159 1.31c5.963 0 10.813-4.85 10.813-10.813s-4.85-10.813-10.813-10.813zm5.412 15.369c-.225.635-1.329 1.244-1.857 1.291-.529.047-.529.391-3.344-.697-2.815-1.088-4.587-3.994-4.725-4.175-.138-.181-1.128-1.5-1.128-2.862 0-1.362.713-2.031.966-2.306.253-.275.552-.344.736-.344.184 0 .368.002.529.01.169.008.397-.064.621.474.225.538.762 1.863.828 1.997.066.134.11.291.022.472-.088.181-.132.294-.263.45-.131.156-.275.35-.394.469-.131.131-.267.275-.115.541.152.266.676 1.113 1.45 1.803.997.888 1.838 1.163 2.097 1.294.259.131.41.11.56-.066.15-.176.644-.75.816-1.009.172-.259.344-.216.578-.131.234.085 1.487.703 1.741.831.253.128.422.194.487.303.066.11.066.635-.159 1.269z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">WhatsApp</h3>
+                        <a href="https://wa.me/+905426506764" target="_blank" class="text-gold hover:text-amber transition-colors font-medium">Mesaj Gönder</a>
+                        <p class="text-gray-400 text-sm mt-2">Anlık İletişim</p>
+                    </div>
+                    
+                    <!-- Çalışma Saatleri Kartı -->
+                    <div class="bg-dark-bg rounded-xl p-6 border border-gray-800 hover:border-gold/50 transition-all group hover:shadow-golden">
+                        <div class="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-all">
+                            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Çalışma Saatleri</h3>
+                        <p class="text-gray-300 text-sm">Pazartesi - Cumartesi</p>
+                        <p class="text-gold font-medium">08:00 - 18:00</p>
+                    </div>
+                </div>
+                
+                <!-- Adres Bölümü -->
+                <div class="bg-dark-bg rounded-2xl p-8 border border-gray-800">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Sol Taraf - Adresler -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                                <span class="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </span>
+                                Adreslerimiz
+                            </h3>
+                            
+                            <div class="space-y-6">
+                                <div class="border-l-4 border-gold pl-4">
+                                    <h4 class="text-gold font-semibold mb-2">1. Şube</h4>
+                                    <p class="text-gray-300">Zeytinlik Mahallesi</p>
+                                    <p class="text-gray-300">7665 Sokak No: 6</p>
+                                    <p class="text-gray-300 font-medium">Kepez / Antalya</p>
+                                </div>
+                                
+                                <div class="border-l-4 border-gold pl-4">
+                                    <h4 class="text-gold font-semibold mb-2">2. Şube</h4>
+                                    <p class="text-gray-300">Çamlıbel Mahallesi</p>
+                                    <p class="text-gray-300">4948 Sokak No: 5</p>
+                                    <p class="text-gray-300 font-medium">Kepez / Antalya</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sağ Taraf - Hızlı İletişim -->
+                        <div class="lg:border-l lg:border-gray-700 lg:pl-8">
+                            <h3 class="text-2xl font-bold text-white mb-6">Hızlı İletişim</h3>
+                            <p class="text-gray-300 mb-8">Sorularınız için bize ulaşabilir, ürünlerimiz hakkında detaylı bilgi alabilirsiniz.</p>
+                            
+                            <div class="space-y-4">
+                                <a href="tel:+905426506764" class="flex items-center justify-center bg-golden-gradient hover:shadow-golden-lg text-black py-4 px-6 rounded-xl font-semibold transition-all transform hover:scale-105">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                    Hemen Arayın
+                                </a>
+                                
+                                <a href="https://wa.me/+905426506764" target="_blank" class="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white py-4 px-6 rounded-xl font-semibold transition-all transform hover:scale-105">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12.031 1.172c-5.963 0-10.812 4.85-10.812 10.813 0 1.903.5 3.757 1.447 5.388l-1.538 5.613 5.744-1.506a10.768 10.768 0 0 0 5.159 1.31c5.963 0 10.813-4.85 10.813-10.813s-4.85-10.813-10.813-10.813zm5.412 15.369c-.225.635-1.329 1.244-1.857 1.291-.529.047-.529.391-3.344-.697-2.815-1.088-4.587-3.994-4.725-4.175-.138-.181-1.128-1.5-1.128-2.862 0-1.362.713-2.031.966-2.306.253-.275.552-.344.736-.344.184 0 .368.002.529.01.169.008.397-.064.621.474.225.538.762 1.863.828 1.997.066.134.11.291.022.472-.088.181-.132.294-.263.45-.131.156-.275.35-.394.469-.131.131-.267.275-.115.541.152.266.676 1.113 1.45 1.803.997.888 1.838 1.163 2.097 1.294.259.131.41.11.56-.066.15-.176.644-.75.816-1.009.172-.259.344-.216.578-.131.234.085 1.487.703 1.741.831.253.128.422.194.487.303.066.11.066.635-.159 1.269z"/>
+                                    </svg>
+                                    WhatsApp'tan Yazın
+                                </a>
+                            </div>
+                            
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">ÖKTEM TAŞ</h3>
+                    <p class="text-gray-400">40 yıllık tecrübemizle kaliteli parke taşı ve beton ürünleri üretimi</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-gold text-lg font-semibold mb-4">Hızlı Linkler</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#anasayfa" class="text-gray-400 hover:text-gold transition-colors">Ana Sayfa</a></li>
+                        <li><a href="#urunler" class="text-gray-400 hover:text-gold transition-colors">Ürünler</a></li>
+                        <li><a href="#hakkimizda" class="text-gray-400 hover:text-gold transition-colors">Hakkımızda</a></li>
+                        <li><a href="#iletisim" class="text-gray-400 hover:text-gold transition-colors">İletişim</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-gold text-lg font-semibold mb-4">Ürün Kategorileri</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#urunler" class="text-gray-400 hover:text-gold transition-colors">Parke Taşları</a></li>
+                        <li><a href="#urunler" class="text-gray-400 hover:text-gold transition-colors">Bordür Taşları</a></li>
+                        <li><a href="#urunler" class="text-gray-400 hover:text-gold transition-colors">Rögar Sistemleri</a></li>
+                        <li><a href="#urunler" class="text-gray-400 hover:text-gold transition-colors">Dekoratif Ürünler</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-gold text-lg font-semibold mb-4">İletişim</h4>
+                    <p class="text-gray-400 mb-2">📞 +90 542 650 67 64</p>
+                    <p class="text-gray-400 mb-2">✉️ info@antalyarogarkapagi.com</p>
+                    <p class="text-gray-400">📍 Kepez/Antalya</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Öktem Taş. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-80 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-black rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative border border-gold/30 shadow-golden-lg">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gold text-3xl">&times;</button>
+            <div id="modalContent" class="p-8"></div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+905426506764" target="_blank" 
+       class="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-110 z-40">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.031 1.172c-5.963 0-10.812 4.85-10.812 10.813 0 1.903.5 3.757 1.447 5.388l-1.538 5.613 5.744-1.506a10.768 10.768 0 0 0 5.159 1.31c5.963 0 10.813-4.85 10.813-10.813s-4.85-10.813-10.813-10.813zm5.412 15.369c-.225.635-1.329 1.244-1.857 1.291-.529.047-.529.391-3.344-.697-2.815-1.088-4.587-3.994-4.725-4.175-.138-.181-1.128-1.5-1.128-2.862 0-1.362.713-2.031.966-2.306.253-.275.552-.344.736-.344.184 0 .368.002.529.01.169.008.397-.064.621.474.225.538.762 1.863.828 1.997.066.134.11.291.022.472-.088.181-.132.294-.263.45-.131.156-.275.35-.394.469-.131.131-.267.275-.115.541.152.266.676 1.113 1.45 1.803.997.888 1.838 1.163 2.097 1.294.259.131.41.11.56-.066.15-.176.644-.75.816-1.009.172-.259.344-.216.578-.131.234.085 1.487.703 1.741.831.253.128.422.194.487.303.066.11.066.635-.159 1.269z"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
